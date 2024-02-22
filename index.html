@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://bootswatch.com/slate/ -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet" >
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Queries Generator</title>
+</head>
+<body>
+
+    <h2>SQL Queries Generator</h2>
+
+    <button type="button" class="btn btn-outline-warning btn-lg" onclick="generateSQL()">Generate SQL Queries</button>
+    <button type="button" class="btn btn-outline-success btn-lg" onclick="copyToCplipboard('textToCopy')">Copy SQL</button>
+    <button type="button" class="btn btn-outline-danger btn-lg" onclick="clearForm('myForm')">Clear data</button>
+    <button type="button" class="btn btn-outline-info btn-lg" onclick="fillFormWithSampleDataSingleRow()">Sample data - SINGLE ROW</button>
+    <button type="button" class="btn btn-outline-info btn-lg" onclick="fillFormWithSampleDataMultiRows()">Sample data - MULTI ROWS</button>
+    
+    <!-- <h3>Generated Queries</h3> -->
+    <div id="textToCopy">
+        <h4>
+            <pre id="result"></pre>
+        </h4>
+    </div>
+
+    <form id="myForm">
+        <div class="row">
+
+            <div class="col">
+                <label for="operation" class="form-label mt-4">Choose operation</label>
+                <select class="form-select" id="operation">
+                    <option value="insert">Insert</option>
+                    <option value="update">Update</option>
+                    <option value="delete">Delete</option>
+                </select>
+            </div>
+    
+            <div class="col">
+                <label class="form-label mt-4" for="tableName">Table Name</label>
+                <input type="text" class="form-control" placeholder="TableNameExample" id="tableName">
+            </div>
+
+            <div class="col">
+                <label class="form-label mt-4" for="primaryKey">Primary Key (for Update/Delete)</label>
+                <input type="text" class="form-control" placeholder="exampleId" id="primaryKey">
+            </div>
+    
+        </div>
+    
+        <div class="form-group">
+            <label class="col-form-label mt-4" for="columnNames">Column Names (comma-separated)</label>
+            <input type="text" class="form-control" placeholder="ColumnName1, ColumnName2, ColumnName3" id="columnNames">
+        </div>
+    
+        <div class="form-group">
+            <label for="dataValues" class="form-label mt-4">Data Values (values for data separated with ',' values for rows separated with ';')</label>
+            <textarea class="form-control" id="dataValues" placeholder="Value1, Value2, Value3, Value4" rows="5"></textarea>
+        </div>
+    
+        <div class="form-group">
+            <label for="primaryKeyValue" class="form-label mt-4">Primary Key Value (for Update/Delete)</label>
+            <textarea class="form-control" id="primaryKeyValue" placeholder="1" rows="5"></textarea>
+            <br>
+        </div>
+    </form>
+
+
+    <script src="./js/sql-generate.js"></script>
+    <script src="./js/copy-text.js"></script>
+    <script src="./js/clear-form.js"></script>
+    <script src="./js/sample-data-filling.js"></script>
+
+</body>
+</html>
