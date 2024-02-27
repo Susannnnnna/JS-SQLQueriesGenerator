@@ -31,7 +31,7 @@ Click on this github page project and see example data to use.
 ### Run the app
 Download files from github
 ```
-git clone https://github.com/Susannnnnna/JS_SQLQueriesGenerator
+git clone https://github.com/Susannnnnna/JS-SQLQueriesGenerator
 ```
 
 To run locally this project open it in visual studio code or any other text editor.
