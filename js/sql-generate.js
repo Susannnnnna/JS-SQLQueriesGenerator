@@ -1,16 +1,14 @@
 function generateSQL() {
-    // Get variables from form
-    var operation = document.getElementById("operation").value;
+    var selectedQueryType = document.getElementById("queryType").value;
     var tableName = document.getElementById("tableName").value;
-    var columnNames = document.getElementById("columnNames").value.split(",").map(name => name.trim());
-    var dataValues = document.getElementById("dataValues").value.split(";");
-    var primaryKey = document.getElementById("primaryKey").value;
-    var primaryKeyValue = document.getElementById("primaryKeyValue").value.split(";").map(id => id.trim());
+    var columnNames = document.getElementById("columnName").value.split(",").map(name => name.trim());
+    var dataValues = document.getElementById("dataValue").value.split(";");
+    var primaryKeys = document.getElementById("primaryKey").value;
+    var primaryKeyValues = document.getElementById("primaryKeyValue").value.split(";").map(id => id.trim());
     var sqlQuery = "";
     let setClause = "";
 
-    // Depending on the case, separate and transform the data get from the form 
-    switch (operation) {
+    switch (selectedQueryType) {
         case "insert":
             dataValues.forEach((row, index) => {
                 const values = row.split(",").map(value => `'${value.trim()}'`).join(",");
@@ -21,14 +19,13 @@ function generateSQL() {
             dataValues.forEach((row, index) => {
                 const values = row.split(",").map(value => value.trim());
                 let setClause = columnNames.map((columnName, columnIndex) => `${columnName}='${values[columnIndex]}'`).join(",");
-                sqlQuery += `UPDATE ${tableName} SET ${setClause} WHERE ${primaryKey} = '${primaryKeyValue[index]}';\n`;
+                sqlQuery += `UPDATE ${tableName} SET ${setClause} WHERE ${primaryKeys} = '${primaryKeyValues[index]}';\n`;
             });
             break;
         case "delete":
-            sqlQuery = `DELETE FROM ${tableName} WHERE ${primaryKey} IN (${primaryKeyValue})`;
+            sqlQuery = `DELETE FROM ${tableName} WHERE ${primaryKeys} IN (${primaryKeyValues})`;
             break;
     }
 
-    // Send prepared data
     document.getElementById("result").innerText = sqlQuery;
 }

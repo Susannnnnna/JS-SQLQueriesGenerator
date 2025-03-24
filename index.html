@@ -17,7 +17,6 @@
     <button type="button" class="btn btn-outline-info btn-lg" onclick="fillFormWithSampleDataSingleRow()">Sample data - SINGLE ROW</button>
     <button type="button" class="btn btn-outline-info btn-lg" onclick="fillFormWithSampleDataMultiRows()">Sample data - MULTI ROWS</button>
     
-    <!-- <h3>Generated Queries</h3> -->
     <div id="textToCopy">
         <h4>
             <pre id="result"></pre>
@@ -28,8 +27,8 @@
         <div class="row">
 
             <div class="col">
-                <label for="operation" class="form-label mt-4">Choose operation</label>
-                <select class="form-select" id="operation">
+                <label for="queryType" class="form-label mt-4">Choose query type</label>
+                <select class="form-select" id="queryType">
                     <option value="insert">Insert</option>
                     <option value="update">Update</option>
                     <option value="delete">Delete</option>
@@ -42,24 +41,24 @@
             </div>
 
             <div class="col">
-                <label class="form-label mt-4" for="primaryKey">Primary Key (for Update/Delete)</label>
+                <label class="form-label mt-4" for="primaryKey">Primary Key (for Update / Delete only)</label>
                 <input type="text" class="form-control" placeholder="exampleId" id="primaryKey">
             </div>
     
         </div>
     
         <div class="form-group">
-            <label class="col-form-label mt-4" for="columnNames">Column Names (comma-separated)</label>
-            <input type="text" class="form-control" placeholder="ColumnName1, ColumnName2, ColumnName3" id="columnNames">
+            <label class="col-form-label mt-4" for="columnName">Column Name(s) (separated with - ' , ')</label>
+            <input type="text" class="form-control" placeholder="ColumnName1, ColumnName2, ColumnName3" id="columnName">
         </div>
     
         <div class="form-group">
-            <label for="dataValues" class="form-label mt-4">Data Values (values for data separated with ',' values for rows separated with ';')</label>
-            <textarea class="form-control" id="dataValues" placeholder="Value1, Value2, Value3, Value4" rows="5"></textarea>
+            <label for="dataValue" class="form-label mt-4">Data Value(s) (columns separated with - ' , ' rows separated with - ' ; ')</label>
+            <textarea class="form-control" id="dataValue" placeholder="Value1, Value2, Value3, Value4" rows="5"></textarea>
         </div>
     
         <div class="form-group">
-            <label for="primaryKeyValue" class="form-label mt-4">Primary Key Value (for Update/Delete)</label>
+            <label for="primaryKeyValue" class="form-label mt-4">Primary Key Value (for Update / Delete only)</label>
             <textarea class="form-control" id="primaryKeyValue" placeholder="1" rows="5"></textarea>
             <br>
         </div>
